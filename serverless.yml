@@ -1,0 +1,11 @@
+service: gzip-api-dev
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: sa-east-1
+functions:
+  app:
+    handler: dist/appHandler.handler
+    events:
+      - http: ANY /
+      - http: ANY /{proxy+}
