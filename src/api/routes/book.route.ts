@@ -6,13 +6,14 @@ import {
   getBooks,
   updateBook,
 } from "../controllers/book.controller";
+import { authenticateJwt } from "../../middlewares/authenticateJwt";
 
 const router = express.Router();
 
-router.get("/", getBooks);
-router.get("/:id", getBookById);
-router.post("/", addBook);
-router.put("/:id", updateBook);
-router.delete("/:id", deleteBook);
+router.get("/", authenticateJwt, getBooks);
+router.get("/:id", authenticateJwt, getBookById);
+router.post("/", authenticateJwt, addBook);
+router.put("/:id", authenticateJwt, updateBook);
+router.delete("/:id", authenticateJwt, deleteBook);
 
 export default router;

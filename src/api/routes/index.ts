@@ -1,9 +1,14 @@
 import { Router } from "express";
 
-import books from "./book.route";
+import authRoute from "./auth.route";
+import usersRoute from "./user.route";
+import booksRoute from "./book.route";
+import { authenticateJwt } from "../../middlewares/authenticateJwt";
 
 const router = Router();
 
-router.use("/books", books);
+router.use("/auth", authRoute);
+router.use("/users", authenticateJwt, usersRoute);
+router.use("/books", authenticateJwt, booksRoute);
 
 export default router;

@@ -4,8 +4,8 @@ export interface IBook extends Document {
   title: string;
   author: string;
   description: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 const BookSchema = new Schema(

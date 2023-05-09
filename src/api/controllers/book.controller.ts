@@ -7,6 +7,7 @@ export const getBooks = catchAsync(
   async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     const books: IBook[] = await Book.find();
     res.locals.data = books;
+
     //throw new AppError("Error getting books", 404);
 
     return next(); // pass control to the success middleware

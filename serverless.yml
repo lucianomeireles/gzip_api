@@ -9,3 +9,8 @@ functions:
     events:
       - http: ANY /
       - http: ANY /{proxy+}
+plugins:
+  - serverless-dotenv-plugin
+custom:
+  dotenv:
+    path: .env
