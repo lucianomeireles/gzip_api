@@ -1,14 +1,14 @@
-import { Schema, model, Document } from "mongoose";
+import { Schema, model, Document } from 'mongoose'
 
 export interface IBook extends Document {
-  title: string;
-  author: string;
-  description: string;
-  createdAt?: Date;
-  updatedAt?: Date;
+  title: string
+  author: string
+  description: string
+  createdAt?: Date
+  updatedAt?: Date
 }
 
-const BookSchema = new Schema(
+const BookSchema = new Schema<IBook>(
   {
     title: {
       type: String,
@@ -22,9 +22,9 @@ const BookSchema = new Schema(
       type: String,
     },
   },
-  { timestamps: true }
-);
+  { timestamps: true },
+)
 
-const Book = model<IBook>("Book", BookSchema);
+const Book = model<IBook>('Book', BookSchema)
 
-export default Book;
+export default Book

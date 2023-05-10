@@ -1,23 +1,23 @@
 export interface ErrorResponse {
-  status: string;
-  statusCode: number;
-  message: string;
+  status: string
+  statusCode: number
+  message: string
   isOperational: boolean
 }
 
 class AppError extends Error {
-  statusCode: number;
-  status: string;
-  isOperational: boolean;
+  statusCode: number
+  status: string
+  isOperational: boolean
 
   constructor(message: string, statusCode: number) {
-    super(message);
-    this.statusCode = statusCode;
-    this.status = `${statusCode}`.startsWith("4") ? "fail" : "error";
-    this.isOperational = true;
+    super(message)
+    this.statusCode = statusCode
+    this.status = `${statusCode}`.startsWith('4') ? 'fail' : 'error'
+    this.isOperational = true
 
-    Error.captureStackTrace(this, this.constructor);
+    Error.captureStackTrace(this, this.constructor)
   }
 }
 
-export default AppError;
+export default AppError

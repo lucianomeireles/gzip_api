@@ -1,14 +1,14 @@
-import { Router } from "express";
+import { Router } from 'express'
 
-import authRoute from "./auth.route";
-import usersRoute from "./user.route";
-import booksRoute from "./book.route";
-import { authenticateJwt } from "../../middlewares/authenticateJwt";
+import authRoute from './auth'
+import usersRoute from './user.route'
+import booksRoute from './book.route'
+import { authenticateJwt } from '../../middlewares/authenticateJwt'
 
-const router = Router();
+const router = Router()
 
-router.use("/auth", authRoute);
-router.use("/users", authenticateJwt, usersRoute);
-router.use("/books", authenticateJwt, booksRoute);
+router.use('/auth', authRoute)
+router.use('/users', authenticateJwt, usersRoute)
+router.use('/books', authenticateJwt, booksRoute)
 
-export default router;
+export default router
