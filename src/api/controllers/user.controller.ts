@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express'
 import Joi from 'joi'
 import catchAsync from '../../middlewares/catchAsync'
-import { IUser } from '../../models/user'
+import { IUser } from '../../models/user.modal'
 import UserService from '../../services/user.service'
 import AppError from '../../utils/appError'
 

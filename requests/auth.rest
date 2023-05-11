@@ -1,0 +1,19 @@
+###
+# Authenticate User
+###
+
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "email": "contato@lucianomeireles.io",
+    "password": "luciano123"
+}
+
+
+GET http://localhost:3000/auth/loggedUser
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODM3ODgwMTR9.oCKpx0ZMteqIkjcYYvfKjal5F_d1yRxhJD8woDcApMs
+
+DELETE http://localhost:3000/logout
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODM3ODI5NTR9.mNsuZ7kTNeVmOmOr-Z3Zvy9D6LFXRsRh4n5dt9_R7cE
+

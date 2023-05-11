@@ -1,0 +1,7 @@
+###
+# Books
+###
+
+GET http://localhost:3000/books
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODM3ODczNzV9.w2RbA6q7Z8bw2KoUd_J0x3Q3W-ez-_gDgWklMkwksU8
+

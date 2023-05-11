@@ -1,4 +1,4 @@
-import User, { IUser } from '../models/user'
+import User, { IUser } from '../models/user.modal'
 
 export default class UserService {
   public static async createUser(user: IUser): Promise<IUser> {
