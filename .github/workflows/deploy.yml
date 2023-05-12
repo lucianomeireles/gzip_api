@@ -3,8 +3,13 @@ name: Deploy master branch
 on:
   push:
     branches:
-      - main
-
+      - notexecute
+  # pull_request:
+  #   branches:
+  #     - main
+env:
+  NODE_ENV: development
+  MONGO_URL: ${{ secrets.MONGO_URL }}
 jobs:
   deploy:
     name: deploy
@@ -12,18 +17,18 @@ jobs:
     strategy:
       matrix:
         node-version: [18.x]
-    env:
-      NODE_ENV: production
-      MONGO_URL: ${{ secrets.MONGO_URL }}
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm ci
+      - name: Install dependencies
+        run: npm install --save-dev
+      - name: Build
+        run: npm run build
       - name: Serverless
-        uses: serverless/github-action@v1.53.0
+        uses: serverless/github-action@v3
         with:
           args: deploy
         env:
