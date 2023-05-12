@@ -8,9 +8,10 @@ import routes from './api/routes'
 import mongooseConfig from './config/mongoose.config'
 import passport from './config/passport.config'
 import { errorHandler } from './middlewares/errorHandler'
+import { notFoundHandler } from './middlewares/notFoundHandler'
 
-const app = express()
 mongooseConfig.connect()
+const app = express()
 
 app.use(
   session({
@@ -30,5 +31,6 @@ app.use(responseEnhancer())
 
 app.use('/', routes)
 app.use(errorHandler)
+app.use(notFoundHandler)
 
-export default app
+export { app, mongooseConfig }
