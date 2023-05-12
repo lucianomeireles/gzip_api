@@ -1,0 +1,40 @@
+###
+# Users
+###
+
+GET {{baseURL}}/users
+Authorization: Bearer {{token}}
+
+###
+
+POST {{baseURL}}/users
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "New User",
+  "email": "newuser@email.com",
+  "password": "mypassword"
+}
+
+###
+
+GET {{baseURL}}/users/645d9e62605ad0033806734e
+Authorization: Bearer {{token}}
+
+###
+
+PUT {{baseURL}}/users/645d9e62605ad0033806734e
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "New User",
+  "email": "newuser@email.com",
+  "password": "mypassword2"
+}
+
+###
+
+DELETE {{baseURL}}/users/645d9e62605ad0033806734e
+Authorization: Bearer {{token}}

@@ -9,6 +9,7 @@ functions:
     events:
       - http: ANY /
       - http: ANY /{proxy+}
+    memorySize: 1024
 plugins:
   - serverless-dotenv-plugin
 custom:

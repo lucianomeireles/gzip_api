@@ -1,0 +1,12 @@
+{
+  "rest-client.environmentVariables": {
+    "local": {
+      "baseURL": "http://localhost:3000",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NWE5ODY0MDZiNzI4OTY1Y2IxOWM4MSIsIm5hbWUiOiJMdWNpYW5vIE1laXJlbGVzIiwiZW1haWwiOiJjb250YXRvQGx1Y2lhbm9tZWlyZWxlcy5pbyIsImlhdCI6MTY4MzgzMDI3N30.7rwVu_N-QN1czMt1L_7PJOzlcad5wNaEd6DB8XIjB4M"
+    },
+    "staging": {
+      "baseURL": "http://localhost:3000",
+      "token": ""
+    }
+  }
+}

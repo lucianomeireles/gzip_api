@@ -2,6 +2,39 @@
 # Books
 ###
 
-GET http://localhost:3000/books
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2ODM3ODczNzV9.w2RbA6q7Z8bw2KoUd_J0x3Q3W-ez-_gDgWklMkwksU8
+GET {{baseURL}}/books
+Authorization: Bearer {{token}}
 
+###
+
+POST {{baseURL}}/books
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "author": "Luciano Meireles",
+  "title": "Luciano's Book",
+  "description": "my book description"
+}
+
+###
+
+GET {{baseURL}}/books/645d38dbd768c6590d7aace1
+Authorization: Bearer {{token}}
+
+###
+
+PUT {{baseURL}}/books/645d38dbd768c6590d7aace1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "author": "Luciano Meireles",
+  "title": "Luciano's Book 2",
+  "description": "my book description"
+}
+
+###
+
+DELETE {{baseURL}}/books/645d36b44b0cea55b72becce
+Authorization: Bearer {{token}}
