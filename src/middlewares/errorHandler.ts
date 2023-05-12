@@ -1,17 +1,15 @@
-import { Request, Response, NextFunction } from "express";
-import AppError, { ErrorResponse } from "../utils/appError";
-import logger from "../config/winston.config";
+import { Request, Response, NextFunction } from 'express'
+import { ErrorResponse } from '../utils/appError'
+import logger from '../config/winston.config'
 
-export const errorHandler = (
-  err: ErrorResponse,
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
-  const statusCode = err.statusCode || 500;
-  const message = err.message || "Internal Server Error";
+export const errorHandler = (err: ErrorResponse, req: Request, res: Response, next: NextFunction) => {
+  if (err) {
+    const statusCode = err.statusCode || 500
+    const message = err.message || 'Internal Server Error'
 
-  logger.error(err.message, err);
+    if (statusCode >= 500) logger.error(err.message, err)
 
-  return res.formatter.badRequest(message);
-};
+    return res.formatter.badRequest(message)
+  }
+  next()
+}
