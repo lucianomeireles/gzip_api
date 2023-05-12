@@ -15,7 +15,7 @@ jobs:
       matrix:
         node-version: [18.x]
     env:
-      NODE_ENV: production
+      NODE_ENV: development
       MONGO_URL: ${{ secrets.MONGO_URL }}
     steps:
       - uses: actions/checkout@v3
