@@ -18,15 +18,11 @@ async function connect() {
     await mongoose.connect(process.env.MONGO_URL || 'check-your-env-file')
     database = mongoose.connection
     logger.info('Connected to MongoDB')
+    return database
   } catch (err) {
     logger.error(`MongoDB connection error: ${err}`)
     process.exit(1)
   }
 }
 
-const disconnect = () => {
-  if (!database) return
-  mongoose.disconnect()
-}
-
-export default { connect, disconnect }
+export default { connect, mongoose }

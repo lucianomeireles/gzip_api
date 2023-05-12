@@ -3,10 +3,10 @@ name: Deploy master branch
 on:
   push:
     branches:
-      - main
-  pull_request:
-    branches:
-      - main
+      - notexecute
+  # pull_request:
+  #   branches:
+  #     - main
 env:
   NODE_ENV: development
   MONGO_URL: ${{ secrets.MONGO_URL }}

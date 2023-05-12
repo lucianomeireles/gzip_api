@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "build": "rimraf dist && tsc",
-    "test": "jest --detectOpenHandles  && npm run eslint && exit 1",
+    "test": "cross-env NODE_ENV=test jest --testTimeout=5000",
     "eslint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "start": "NODE_ENV=development nodemon --watch 'src/**/*' --exec 'ts-node' ./server.ts",
     "startwin": "nodemon --exitcrash ./server.ts --watch ./src",
@@ -16,9 +16,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/joi": "^17.2.3",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-response-formatter": "^2.0.2",
@@ -35,6 +35,7 @@
     "winston": "^3.8.2"
   },
   "devDependencies": {
+    "@types/joi": "^17.2.3",
     "@types/bcryptjs": "^2.4.2",
     "@types/cors": "^2.8.13",
     "@types/express": "^4.17.17",

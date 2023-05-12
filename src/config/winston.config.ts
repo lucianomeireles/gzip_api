@@ -1,7 +1,6 @@
 import winston, { createLogger, format, transports } from 'winston'
 const { combine, timestamp, printf } = format
 
-// Custom log format
 const logFormat = printf(({ level, message, timestamp }) => {
   return `${timestamp} [${level.toUpperCase()}]: ${message}`
 })
@@ -13,7 +12,7 @@ const logger = createLogger({
   transports: [new transports.Console()],
 })
 
-if (process.env.NODE_ENV !== 'development') {
+if (process.env.NODE_ENV == 'production') {
   logger.add(new winston.transports.File({ filename: 'error.log', level: 'error' }))
   logger.add(new winston.transports.File({ filename: 'combined.log' }))
 }
