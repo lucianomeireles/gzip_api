@@ -5,7 +5,6 @@
   "main": "server.js",
   "scripts": {
     "build": "rimraf dist && tsc",
-    "buildgha": "tsc",
     "test": "jest --detectOpenHandles  && npm run eslint && exit 1",
     "eslint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "start": "NODE_ENV=development nodemon --watch 'src/**/*' --exec 'ts-node' ./server.ts",
