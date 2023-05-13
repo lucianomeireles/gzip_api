@@ -14,5 +14,5 @@ GET {{baseURL}}/auth/loggedUser
 Authorization: Bearer {{token}}
 
 ###
-DELETE {{baseURL}}/logout
+DELETE {{baseURL}}/auth/logout
 Authorization: Bearer {{token}}

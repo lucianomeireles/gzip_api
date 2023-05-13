@@ -1,11 +1,8 @@
 import request from 'supertest'
 import { app, mongooseConfig } from '../src/app'
+import { validUser } from './mockdatatest'
 
 var token = ''
-const validUser = {
-  email: 'contato@lucianomeireles.io',
-  password: 'password123',
-}
 
 beforeAll(async () => {
   const response = await request(app).post('/auth/login').send(validUser)

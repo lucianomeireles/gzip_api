@@ -19,7 +19,7 @@ Content-Type: application/json
 
 ###
 
-GET {{baseURL}}/books/645d38dbd768c6590d7aace1
+GET {{baseURL}}/books/645eb77e77c516f7d48dbe43
 Authorization: Bearer {{token}}
 
 ###
