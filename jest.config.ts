@@ -9,7 +9,7 @@ export default {
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/app/$1',
   },
-  testPathIgnorePatterns: ['/node_modules/', '/dist/'],
+  testPathIgnorePatterns: ['/node_modules/', '/dist/', '/mockdatatest.ts'],
   collectCoverageFrom: ['src/**/*.ts'],
   coverageDirectory: 'coverage',
   testTimeout: 30000,
