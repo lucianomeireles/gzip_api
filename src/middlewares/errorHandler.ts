@@ -9,7 +9,9 @@ export const errorHandler = (err: ErrorResponse, req: Request, res: Response, ne
 
     if (statusCode >= 500) logger.error(err.message, err)
 
-    return res.formatter.badRequest(message)
+    return res.formatter.badRequest({
+      message: message,
+    })
   }
   next()
 }

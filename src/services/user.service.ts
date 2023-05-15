@@ -2,6 +2,9 @@ import { IUser, IUserDocument, UserModel } from '../models/user.model'
 
 export default class UserService {
   public static async createUser(user: IUser): Promise<IUserDocument> {
+    const userEmailExists = await this.getUserByEmail(user.email)
+    if (userEmailExists?.id) throw new Error('User with email already exists')
+
     return UserModel.create(user)
   }
 

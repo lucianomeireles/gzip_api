@@ -34,7 +34,7 @@ describe('authRouter', () => {
         })
 
       expect(response.statusCode).toBe(400)
-      expect(response.body.error).toBe('e-mail or passaword not valid.')
+      expect(response.body.error.message).toBe('e-mail or passaword not valid.')
     })
   })
 

@@ -13,5 +13,5 @@ export default {
   collectCoverageFrom: ['src/**/*.ts'],
   coverageDirectory: 'coverage',
   testTimeout: 30000,
-  setupFiles: ['dotenv/config'],
+  setupFiles: ['dotenv/config'],  
 }
