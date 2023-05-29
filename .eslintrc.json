@@ -1,6 +1,6 @@
 {
   "parser": "@typescript-eslint/parser",
-  "ignorePatterns": ["node_modules/", "build/", "__tests__/", "dist/", "jest.config.ts", ".github/workflows/*", "./coverage/*"],
+  "ignorePatterns": ["node_modules/", "build/", "__tests__/", "dist/", "jest.config.ts", ".github/workflows/*", "./coverage/*", "coverage/*"],
   "parserOptions": {
     "project": ["./tsconfig.json"]
   },

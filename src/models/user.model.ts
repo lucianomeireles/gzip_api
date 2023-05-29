@@ -1,10 +1,12 @@
-import mongoose, { model, Model, Document } from 'mongoose'
+import { Schema, model, Model, Document } from 'mongoose'
 import bcryptjs from 'bcryptjs'
+import { IOrganization } from './organization.model'
 
 export interface IUser {
   name: string
   email: string
   password: string
+  organization: IOrganization
   createdAt?: Date
   updatedAt?: Date
 }
@@ -12,11 +14,25 @@ export interface IUser {
 export interface IUserDocument extends IUser, Document {}
 export type IUserModel = Model<IUserDocument>
 
-const UserSchema = new mongoose.Schema(
+const UserSchema = new Schema(
   {
-    name: String,
-    email: String,
-    password: String,
+    name: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    organization: {
+      type: Schema.Types.ObjectId,
+      ref: 'Organization',
+      required: true,
+    },
   },
   { timestamps: true },
 )

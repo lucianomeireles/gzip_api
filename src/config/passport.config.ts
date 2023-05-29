@@ -19,7 +19,7 @@ passport.use(
         const isValidPassword = await bcryptjs.compare(password, user.password)
         if (!isValidPassword) throw new AppError('e-mail or passaword not valid.', 401)
 
-        const userResponse = { id: user._id, name: user.name, email: user.email }
+        const userResponse = { id: user._id, name: user.name, email: user.email, organization: user.organization }
 
         return done(null, userResponse)
       } catch (error) {
@@ -43,7 +43,7 @@ passport.use(
         const user = await UserService.getUserById(jwtPayload.id)
         if (!user) return done(null, false)
 
-        const userResponse = { id: user._id, name: user.name, email: user.email }
+        const userResponse = { id: user._id, name: user.name, email: user.email, organization: user.organization }
         return done(null, userResponse)
       } catch (err) {
         return done(err)

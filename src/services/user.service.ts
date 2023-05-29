@@ -1,19 +1,22 @@
 import { IUser, IUserDocument, UserModel } from '../models/user.model'
+import { random } from 'lodash'
 
 export default class UserService {
   public static async createUser(user: IUser): Promise<IUserDocument> {
     const userEmailExists = await this.getUserByEmail(user.email)
     if (userEmailExists?.id) throw new Error('User with email already exists')
 
+    if (!user.password) user.password = random(100000, 999999).toString()
+
     return UserModel.create(user)
   }
 
   public static async getUserById(id: string): Promise<IUserDocument | null> {
-    return UserModel.findById(id).exec()
+    return UserModel.findById(id).populate('organization', 'id name').exec()
   }
 
   public static async getUserByEmail(email: string): Promise<IUserDocument | null> {
-    return UserModel.findOne({ email }).exec()
+    return UserModel.findOne({ email }).populate('organization', 'id name').exec()
   }
 
   public static async getUsers(): Promise<IUserDocument[]> {

@@ -1,19 +1,28 @@
 import request from 'supertest'
 import { app, mongooseConfig } from '../src/app'
-import { validUser } from './mockdatatest'
+import { generateOrgData, getToken } from './mockdatatest'
+import { IUser } from '../src/models/user.model'
 
 var token = ''
+var organizationId = ''
+var validUser: IUser = {} as IUser
 
 beforeAll(async () => {
-  const response = await request(app).post('/auth/login').send(validUser)
-  token = response.body.data.token
+  const orgData = generateOrgData()
+  validUser = orgData.user as IUser
+  const res = await getToken(app, orgData)
+  organizationId = res.organizationId
+  token = res.token
 })
 
 afterAll(async () => {
+  if (organizationId) {
+    await request(app).delete(`/orgs/${organizationId}`).set('Authorization', `Bearer ${token}`)
+  }
   await mongooseConfig.mongoose.connection.close()
 })
 
-describe('authRouter', () => {
+describe('Auth API', () => {
   describe('POST /auth/login', () => {
     test('returns a 200 response and a token for a valid user', async () => {
       const response = await request(app).post('/auth/login').send({

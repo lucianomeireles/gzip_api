@@ -2,7 +2,7 @@
   "rest-client.environmentVariables": {
     "local": {
       "baseURL": "http://localhost:3000",
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NWE5ODY0MDZiNzI4OTY1Y2IxOWM4MSIsIm5hbWUiOiJMdWNpYW5vIE1laXJlbGVzIiwiZW1haWwiOiJjb250YXRvQGx1Y2lhbm9tZWlyZWxlcy5pbyIsImlhdCI6MTY4NDE1NTEyM30.uZ8u36xJVQGxQNwLInJus9CP5NdEpfgByouDUfdF8KA"
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NjJjNDI1ZGZmMGNiYjlmODRkYTFhYyIsIm5hbWUiOiJVc2VyTmFtZSIsImVtYWlsIjoiZW1haWxAZW1haWwuY29tIiwib3JnYW5pemF0aW9uIjp7ImlkIjoiNjQ2MmM0MjVkZmYwY2JiOWY4NGRhMWE5IiwibmFtZSI6Ik15IE9yZ2FuaXphdGlvbiJ9LCJpYXQiOjE2ODQxOTQzNDF9.IWOiJ_hFvxiNr5Cjplg3bHN558kEHROUeqm9g78PlJk"
     },
     "staging": {
       "baseURL": "https://pcwma66fbg.execute-api.sa-east-1.amazonaws.com/dev",

@@ -1,0 +1,41 @@
+###
+# Organizations
+###
+
+# Create a new organization
+POST {{baseURL}}/orgs
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "org": {
+    "name": "My Organization 2"
+  },
+  "user": {
+    "name": "UserName2",
+    "email": "email@email2.com"
+  } 
+}
+
+###
+
+# Get an organization by ID
+GET {{baseURL}}/orgs/6462c425dff0cbb9f84da1a9
+Authorization: Bearer {{token}}
+
+###
+
+# Update an organization by ID
+PUT {{baseURL}}/orgs/6462c425dff0cbb9f84da1a9
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "My Updated Organization"
+}
+
+###
+
+# Delete an organization by ID
+DELETE {{baseURL}}/orgs/6462c425dff0cbb9f84da1a9
+Authorization: Bearer {{token}}

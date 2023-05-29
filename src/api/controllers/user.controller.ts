@@ -24,6 +24,8 @@ export const getUserById = catchAsync(async (req: Request, res: Response): Promi
 })
 
 const createUser = catchAsync(async (req: Request, res: Response) => {
+  const loggedUser = req.user as IUser
+
   const { error } = userJoiSchema.validate(req.body)
   if (error) throw new AppError(error.details[0].message, 400)
 
@@ -32,6 +34,7 @@ const createUser = catchAsync(async (req: Request, res: Response) => {
     name,
     email,
     password,
+    organization: loggedUser.organization,
   })
   return res.formatter.ok(user)
 })
