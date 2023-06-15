@@ -1,21 +1,24 @@
-import { Schema, model, Model, Document } from 'mongoose'
+import mongoose, { Document, Model, Schema } from 'mongoose'
 import bcryptjs from 'bcryptjs'
 import { IOrganization } from './organization.model'
 
-export interface IUser {
+export interface IUser extends Document {
+  organization: IOrganization
   name: string
   email: string
   password: string
-  organization: IOrganization
   createdAt?: Date
   updatedAt?: Date
 }
 
-export interface IUserDocument extends IUser, Document {}
-export type IUserModel = Model<IUserDocument>
-
+export type IUserModel = Model<IUser>
 const UserSchema = new Schema(
   {
+    organization: {
+      type: Schema.Types.ObjectId,
+      ref: 'Organization',
+      required: true,
+    },
     name: {
       type: String,
       required: true,
@@ -28,17 +31,12 @@ const UserSchema = new Schema(
       type: String,
       required: true,
     },
-    organization: {
-      type: Schema.Types.ObjectId,
-      ref: 'Organization',
-      required: true,
-    },
   },
   { timestamps: true },
 )
 
 // Hash the user's password before saving it to the database
-UserSchema.pre<IUserDocument>('save', async function (next) {
+UserSchema.pre<IUser>('save', async function (next) {
   if (!this.isModified('password')) return next()
   const salt = await bcryptjs.genSalt(10)
   const hash = await bcryptjs.hash(this.password, salt)
@@ -46,4 +44,4 @@ UserSchema.pre<IUserDocument>('save', async function (next) {
   next()
 })
 
-export const UserModel = model<IUserDocument>('User', UserSchema)
+export const UserModel = mongoose.model<IUser>('User', UserSchema)

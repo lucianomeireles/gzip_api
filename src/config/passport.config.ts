@@ -15,9 +15,9 @@ passport.use(
       try {
         const user = await UserService.getUserByEmail(email)
 
-        if (!user) throw new AppError('e-mail or passaword not valid.', 401)
+        if (!user) throw new AppError('e-mail or password not valid.', 401)
         const isValidPassword = await bcryptjs.compare(password, user.password)
-        if (!isValidPassword) throw new AppError('e-mail or passaword not valid.', 401)
+        if (!isValidPassword) throw new AppError('e-mail or password not valid.', 401)
 
         const userResponse = { id: user._id, name: user.name, email: user.email, organization: user.organization }
 

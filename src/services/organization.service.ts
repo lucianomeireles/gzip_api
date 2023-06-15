@@ -1,10 +1,10 @@
-import { IOrganization, IOrganizationDocument, OrganizationModel } from '../models/organization.model'
-import { IUser, IUserDocument, UserModel } from '../models/user.model'
+import { IOrganization, OrganizationModel } from '../models/organization.model'
+import { IUser, UserModel } from '../models/user.model'
 import userService from './user.service'
 
 interface ICreateOrganizationResponse {
-  org: IOrganizationDocument
-  user: IUserDocument
+  org: IOrganization
+  user: IUser
 }
 
 export default class OrganizationService {
@@ -21,24 +21,21 @@ export default class OrganizationService {
     return { org: newOrg, user: newUser }
   }
 
-  public static async getOrganizationById(id: string): Promise<IOrganizationDocument | null> {
+  public static async getOrganizationById(id: string): Promise<IOrganization | null> {
     return OrganizationModel.findById(id).exec()
   }
 
-  public static async getOrganizationByName(name: string): Promise<IOrganizationDocument | null> {
+  public static async getOrganizationByName(name: string): Promise<IOrganization | null> {
     return OrganizationModel.findOne({ name }).exec()
   }
 
-  public static async updateOrganization(
-    id: string,
-    organization: IOrganization,
-  ): Promise<IOrganizationDocument | null> {
+  public static async updateOrganization(id: string, organization: IOrganization): Promise<IOrganization | null> {
     return OrganizationModel.findByIdAndUpdate(id, organization, {
       new: true,
     })
   }
 
-  public static async deleteOrganization(organizationId: string): Promise<IOrganizationDocument | null> {
+  public static async deleteOrganization(organizationId: string): Promise<IOrganization | null> {
     await UserModel.deleteMany({ organizationId: organizationId })
     return OrganizationModel.findByIdAndDelete(organizationId)
   }

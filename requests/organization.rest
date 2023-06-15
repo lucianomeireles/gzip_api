@@ -9,11 +9,11 @@ Content-Type: application/json
 
 {
   "org": {
-    "name": "My Organization 2"
+    "name": "LMSoft5"
   },
   "user": {
-    "name": "UserName2",
-    "email": "email@email2.com"
+    "name": "Luciano Meireles",
+    "email": "contato5@meireles.com"
   } 
 }
 

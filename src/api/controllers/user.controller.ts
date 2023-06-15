@@ -11,47 +11,44 @@ const userJoiSchema = Joi.object({
   password: Joi.string(),
 })
 
-const getUsers = catchAsync(async (req: Request, res: Response) => {
-  const users = await userService.getUsers()
+export const getUsers = catchAsync(async (req: Request, res: Response) => {
+  const loggedUser = req.user as IUser
+  const users = await userService.getUsers(loggedUser.organization.id)
   return res.formatter.ok(users)
 })
 
 export const getUserById = catchAsync(async (req: Request, res: Response): Promise<void> => {
   const user: IUser | null = await userService.getUserById(req.params.id)
-  if (!user) throw new AppError('User not found', 404)
 
+  if (!user) throw new AppError('User not found', 404)
   return res.formatter.ok(user)
 })
 
-const createUser = catchAsync(async (req: Request, res: Response) => {
-  const loggedUser = req.user as IUser
-
+export const createUser = catchAsync(async (req: Request, res: Response) => {
   const { error } = userJoiSchema.validate(req.body)
   if (error) throw new AppError(error.details[0].message, 400)
 
-  const { name, email, password } = req.body
+  const loggedUser = req.user as IUser
   const user = await userService.createUser({
-    name,
-    email,
-    password,
+    ...req.body,
     organization: loggedUser.organization,
   })
-  return res.formatter.ok(user)
+  return res.formatter.created(user)
 })
 
 export const updateUser = catchAsync(async (req: Request, res: Response): Promise<void> => {
   const { error } = userJoiSchema.validate(req.body)
   if (error) throw new AppError(error.details[0].message, 400)
 
-  const updatedUser: IUser | null = await userService.updateUser(req.params.id, req.body)
+  const loggedUser = req.user as IUser
+  const updatedUser: IUser | null = await userService.updateUser(loggedUser.organization.id, req.params.id, req.body)
   if (!updatedUser) return res.formatter.notFound('User not found')
   return res.formatter.ok(updatedUser)
 })
 
 export const deleteUser = catchAsync(async (req: Request, res: Response): Promise<void> => {
-  const deletedUser: IUser | null = await userService.deleteUser(req.params.id)
+  const loggedUser = req.user as IUser
+  const deletedUser: IUser | null = await userService.deleteUser(loggedUser.organization.id, req.params.id)
   if (!deletedUser) return res.formatter.notFound('User not found')
   return res.formatter.ok(deletedUser)
 })
-
-export { createUser, getUsers }

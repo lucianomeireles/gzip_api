@@ -19,12 +19,12 @@ Content-Type: application/json
 
 ###
 
-GET {{baseURL}}/users/6462b38f24da90ad4da5beb7
+GET {{baseURL}}/users/6489d7f457fcbe287b9d2758
 Authorization: Bearer {{token}}
 
 ###
 
-PUT {{baseURL}}/users/645d9e62605ad0033806734e
+PUT {{baseURL}}/users/6489d7f457fcbe287b9d2758
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
@@ -36,5 +36,5 @@ Content-Type: application/json
 
 ###
 
-DELETE {{baseURL}}/users/645a91614c6681be96ffe47e
+DELETE {{baseURL}}/users/6489d7f457fcbe287b9d2758
 Authorization: Bearer {{token}}

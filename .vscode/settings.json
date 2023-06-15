@@ -2,7 +2,7 @@
   "rest-client.environmentVariables": {
     "local": {
       "baseURL": "http://localhost:3000",
-      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NjJjNDI1ZGZmMGNiYjlmODRkYTFhYyIsIm5hbWUiOiJVc2VyTmFtZSIsImVtYWlsIjoiZW1haWxAZW1haWwuY29tIiwib3JnYW5pemF0aW9uIjp7ImlkIjoiNjQ2MmM0MjVkZmYwY2JiOWY4NGRhMWE5IiwibmFtZSI6Ik15IE9yZ2FuaXphdGlvbiJ9LCJpYXQiOjE2ODQxOTQzNDF9.IWOiJ_hFvxiNr5Cjplg3bHN558kEHROUeqm9g78PlJk"
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODljNjc2YTFjNjAxNTVhNThhYjI1NiIsIm5hbWUiOiJMdWNpYW5vIE1laXJlbGVzIiwiZW1haWwiOiJjb250YXRvNUBtZWlyZWxlcy5jb20iLCJvcmdhbml6YXRpb24iOnsiaWQiOiI2NDg5YzY3NmExYzYwMTU1YTU4YWIyNTMiLCJuYW1lIjoiTE1Tb2Z0NSJ9LCJpYXQiOjE2ODY3NTA4Mzh9.ADfBjXAWTK5vg3l_83O6UMXlqeouZLbbCjrzIpop-Bo"
     },
     "staging": {
       "baseURL": "https://pcwma66fbg.execute-api.sa-east-1.amazonaws.com/dev",

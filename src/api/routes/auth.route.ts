@@ -2,15 +2,15 @@ import dotenv from 'dotenv'
 import express from 'express'
 import jwt from 'jsonwebtoken'
 import passport from '../../config/passport.config'
-import { IUserDocument } from '../../models/user.model'
+import { IUser } from '../../models/user.model'
 dotenv.config()
 
 const router = express.Router()
 
 router.post('/login', passport.authenticate('local'), async (req, res, next) => {
-  passport.authenticate('local', (err: Error, user: IUserDocument) => {
+  passport.authenticate('local', (err: Error, user: IUser) => {
     if (err) return res.formatter.unauthorized({ message: err.message })
-    if (!user) return res.formatter.unauthorized({ message: 'e-mail or passaword not valid.' })
+    if (!user) return res.formatter.unauthorized({ message: 'e-mail or password not valid.' })
     req.logIn(user, (err) => {
       if (err) return res.formatter.unauthorized({ message: err.details[0].message })
       const token = jwt.sign(user, process.env.JWT_SECRET || 'check-your-env-file')

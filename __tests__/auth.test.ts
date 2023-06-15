@@ -43,7 +43,7 @@ describe('Auth API', () => {
         })
 
       expect(response.statusCode).toBe(400)
-      expect(response.body.error.message).toBe('e-mail or passaword not valid.')
+      expect(response.body.error.message).toBe('e-mail or password not valid.')
     })
   })
 

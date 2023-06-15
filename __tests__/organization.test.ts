@@ -1,8 +1,6 @@
 import request from 'supertest'
 import { app, mongooseConfig } from '../src/app'
-import { IOrganization } from '../src/models/organization.model'
 import { generateOrgData, getToken } from './mockdatatest'
-import { IUser } from '../src/models/user.model'
 
 let token = ''
 let organizationId = ''

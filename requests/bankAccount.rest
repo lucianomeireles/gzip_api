@@ -1,0 +1,38 @@
+# Bank Accounts
+###
+
+GET {{baseURL}}/bank-accounts
+Authorization: Bearer {{token}}
+
+###
+
+POST {{baseURL}}/bank-accounts
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "accountNumber": "123456",
+  "bankName": "Bank XYZ",
+  "balance": 1000
+}
+
+###
+
+GET {{baseURL}}/bank-accounts/6489c68ca1c60155a58ab25d
+Authorization: Bearer {{token}}
+
+###
+
+PUT {{baseURL}}/bank-accounts/6489c68ca1c60155a58ab25d
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "accountNumber": "987654",
+  "bankName": "New Bank"
+}
+
+###
+
+DELETE {{baseURL}}/bank-accounts/6489c99740f4b44b7798720a
+Authorization: Bearer {{token}}
